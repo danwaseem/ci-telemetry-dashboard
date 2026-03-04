@@ -3,7 +3,12 @@
 
 > A portfolio project demonstrating CI/CD, Docker, Python automation, and reliability monitoring.
 
-[![CI Pipeline](https://github.com/YOUR_USERNAME/ci-telemetry-dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/ci-telemetry-dashboard/actions/workflows/ci.yml)
+[![CI Pipeline](https://github.com/danwaseem/ci-telemetry-dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/danwaseem/ci-telemetry-dashboard/actions/workflows/ci.yml)
+
+## Dashboard Preview
+
+![CI Telemetry Dashboard1](docs/images/dashboard1.png)
+![CI Telemetry Dashboard2](docs/images/dashboard2.png)
 
 ## Quick Start (Local)
 ```bash
