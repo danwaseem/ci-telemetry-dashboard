@@ -1,0 +1,46 @@
+{
+  "total": 17,
+  "passed": 17,
+  "failed": 0,
+  "skipped": 0,
+  "pass_rate": 100.0,
+  "duration_seconds": 0.202,
+  "slow_tests": [
+    {
+      "name": "test_add_positive_integers",
+      "classname": "tests.test_main.TestAdd",
+      "duration": 0.006,
+      "status": "passed"
+    },
+    {
+      "name": "test_add_negative_numbers",
+      "classname": "tests.test_main.TestAdd",
+      "duration": 0.005,
+      "status": "passed"
+    },
+    {
+      "name": "test_add_floats",
+      "classname": "tests.test_main.TestAdd",
+      "duration": 0.004,
+      "status": "passed"
+    },
+    {
+      "name": "test_add_zero",
+      "classname": "tests.test_main.TestAdd",
+      "duration": 0.004,
+      "status": "passed"
+    },
+    {
+      "name": "test_all_pass",
+      "classname": "tests.test_main.TestComputePassRate",
+      "duration": 0.004,
+      "status": "passed"
+    }
+  ],
+  "failures": [],
+  "coverage": {
+    "line_coverage_pct": 78.26,
+    "branch_coverage_pct": 0.0
+  },
+  "generated_at": "2026-03-04T22:29:46.543255+00:00"
+}

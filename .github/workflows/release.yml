@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  docker-and-release:
+    name: Build Docker Image & Publish Release Artifact
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to create GitHub Release
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests + generate report
+        run: |
+          mkdir -p report/output
+          pytest tests/ \
+            --junitxml=report/junit.xml \
+            --cov=app \
+            --cov-report=xml:coverage.xml
+          python scripts/collect_telemetry.py \
+            --junit report/junit.xml \
+            --coverage coverage.xml \
+            --output report/output/telemetry.json
+          python scripts/generate_report.py \
+            --telemetry report/output/telemetry.json \
+            --template  report/template/template.html \
+            --output    report/output/index.html
+
+      - name: Build Docker image
+        run: docker build -t ci-telemetry:${{ github.ref_name }} .
+
+      - name: Zip report output
+        run: |
+          cd report/output
+          zip -r ../../ci-report-${{ github.ref_name }}.zip .
+
+      - name: Create GitHub Release with report artifact
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ci-report-${{ github.ref_name }}.zip
+          tag_name: ${{ github.ref_name }}
+          name: "Release ${{ github.ref_name }}"
+          body: |
+            ## CI Telemetry Dashboard — ${{ github.ref_name }}
+            
+            Automated release. Download `ci-report-*.zip` for the full HTML dashboard and telemetry JSON.
