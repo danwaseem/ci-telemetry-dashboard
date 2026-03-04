@@ -13,7 +13,7 @@
 ## Quick Start (Local)
 ```bash
 # 1. Clone
-git clone https://github.com/YOUR_USERNAME/ci-telemetry-dashboard.git
+git clone https://github.com/danwaseem/ci-telemetry-dashboard.git
 cd ci-telemetry-dashboard
 
 # 2. Set up virtual environment
