@@ -11,6 +11,7 @@ Usage:
         --template  report/template/template.html \
         --output    report/output/index.html
 """
+
 from __future__ import annotations
 
 import argparse

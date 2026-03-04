@@ -11,6 +11,7 @@ Usage:
         --coverage coverage.xml \
         --output report/output/telemetry.json
 """
+
 from __future__ import annotations
 
 import argparse
